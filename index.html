@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manual eSponsor – Conecta tu emprendimiento con tus redes sociales</title>
+<meta name="description" content="Manual y tutorías para que emprendimientos locales creen su tienda en eSponsor y conecten su trabajo con redes sociales y WhatsApp.">
+<meta property="og:title" content="Manual eSponsor">
+<meta property="og:description" content="Aprende a crear tu tienda digital y conectarla con tus redes sociales.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23c9f76f'/><text x='50' y='68' font-size='56' text-anchor='middle' fill='%231b1b1d' font-family='Arial' font-weight='700'>e</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ===== PALETA eSponsor ===== */
+  :root {
+    --fondo: #1b1b1d;      /* gris carbón */
+    --forma: #242426;      /* manchas sutiles del patrón */
+    --lima: #c9f76f;       /* verde lima del banner */
+    --turquesa: #00c9a7;   /* títulos y enlaces */
+    --texto: #f2f2f2;
+    --texto-suave: #a9a9ad;
+    --panel: #232325;
+    --borde: rgba(255, 255, 255, .12);
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html { color-scheme: dark; }
+  body {
+    min-height: 100vh;
+    font-family: "Outfit", system-ui, -apple-system, "Segoe UI", sans-serif;
+    color: var(--texto);
+    background-color: var(--fondo);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cg fill='%23242426'%3E%3Ccircle cx='75' cy='75' r='17'/%3E%3Ccircle cx='50' cy='50' r='15'/%3E%3Ccircle cx='100' cy='50' r='15'/%3E%3Ccircle cx='50' cy='100' r='15'/%3E%3Ccircle cx='100' cy='100' r='15'/%3E%3Ccircle cx='0' cy='0' r='15'/%3E%3Ccircle cx='150' cy='0' r='15'/%3E%3Ccircle cx='0' cy='150' r='15'/%3E%3Ccircle cx='150' cy='150' r='15'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 150px 150px;
+    line-height: 1.55;
+    padding: 56px 16px 32px;
+    padding-bottom: calc(32px + env(safe-area-inset-bottom, 0px));
+  }
+  main { max-width: 480px; margin: 0 auto; text-align: center; }
+
+  h1 { font-size: 2.2rem; line-height: 1.1; font-weight: 700; color: var(--lima); }
+  .lema { margin: 12px auto 0; max-width: 34ch; font-size: 1.08rem; }
+
+  .botones { display: grid; gap: 12px; margin: 28px 0; }
+  .btn {
+    display: block; width: 100%; padding: 14px 16px;
+    background: var(--lima); color: #14210a;
+    font: inherit; font-weight: 600; text-decoration: none; text-align: center;
+    border-radius: 10px; border: 2px solid var(--lima); cursor: pointer;
+    transition: transform .15s, background .15s, box-shadow .15s;
+  }
+  .btn:hover { box-shadow: 0 6px 20px rgba(201, 247, 111, .25); transform: translateY(-1px); }
+  .btn:active { transform: scale(.98); }
+  .btn.turquesa { background: var(--turquesa); border-color: var(--turquesa); color: #04211b; }
+  .btn.turquesa:hover { box-shadow: 0 6px 20px rgba(0, 201, 167, .25); }
+  .btn.secundario { background: transparent; color: var(--lima); }
+  .btn.secundario:hover { background: rgba(201, 247, 111, .1); }
+  .btn:focus-visible, a:focus-visible, .cerrar:focus-visible { outline: 3px solid var(--texto); outline-offset: 3px; }
+
+  .caja {
+    text-align: left; background: var(--panel);
+    border: 1px solid var(--borde); border-radius: 14px;
+    padding: 20px 20px 22px; margin-top: 16px;
+  }
+  h2 { font-size: 1.2rem; font-weight: 600; color: var(--turquesa); margin-bottom: 10px; }
+  ul, ol { padding-left: 1.2rem; display: grid; gap: 8px; }
+  li::marker { color: var(--lima); font-weight: 700; }
+  .suave { color: var(--texto-suave); font-size: .95rem; }
+
+  .servicios { display: grid; gap: 14px; list-style: none; padding: 0; margin-top: 16px; }
+  .servicios li { border-left: 3px solid var(--turquesa); padding-left: 12px; }
+  .servicios strong { display: block; font-weight: 600; }
+  .servicios span { color: var(--texto-suave); font-size: .95rem; }
+
+  .social { display: flex; justify-content: center; gap: 18px; margin: 22px 0 4px; }
+  .social a { color: var(--turquesa); text-decoration: none; font-weight: 500; }
+  .social a:hover { text-decoration: underline; }
+  footer { margin-top: 28px; font-size: .8rem; color: var(--texto-suave); }
+  footer a { color: var(--texto); }
+
+  /* ===== VENTANAS ANIMADAS ===== */
+  .modal {
+    position: fixed; inset: 0; z-index: 50;
+    display: grid; place-items: center; padding: 16px;
+    background: rgba(8, 8, 9, .72);
+    -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+    opacity: 0; visibility: hidden;
+    transition: opacity .3s ease, visibility 0s linear .3s;
+  }
+  .modal.abierto { opacity: 1; visibility: visible; transition: opacity .3s ease; }
+  .modal .ventana {
+    position: relative; width: 100%; max-width: 460px; max-height: 85vh; overflow-y: auto;
+    background: var(--panel); border: 1.5px solid var(--turquesa); border-radius: 18px;
+    padding: 26px 22px 24px; text-align: left;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, .6), 0 0 40px rgba(0, 201, 167, .12);
+    transform: translateY(32px) scale(.92); opacity: 0;
+    transition: transform .4s cubic-bezier(.2, .9, .3, 1.15), opacity .3s ease;
+  }
+  .modal.abierto .ventana { transform: none; opacity: 1; }
+  .modal .ventana h2 { font-size: 1.3rem; padding-right: 36px; }
+  .cerrar {
+    position: absolute; top: 12px; right: 12px; width: 34px; height: 34px;
+    border-radius: 50%; border: 1px solid var(--borde); background: transparent;
+    color: var(--texto); font-size: 1.2rem; line-height: 1; cursor: pointer;
+  }
+  .cerrar:hover { background: rgba(255, 255, 255, .1); }
+  .modal h3 { font-size: 1.05rem; font-weight: 600; color: var(--turquesa); margin-top: 20px; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .btn, .modal, .modal .ventana { transition: none; }
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <!-- 1. CABECERA -->
+  <h1>Manual eSponsor</h1>
+  <p class="lema">Aprende a crear tu tienda digital y a conectar tu emprendimiento con tus redes sociales.</p>
+
+  <!-- 2. BOTONES PRINCIPALES -->
+  <div class="botones">
+    <a class="btn" href="https://esponsor.com/squattslide" target="_blank" rel="noopener">Ver un ejemplo real en eSponsor</a>
+    <a class="btn turquesa" href="https://help.esponsor.com/faq/que-es-esponsor" target="_blank" rel="noopener">eSponsor información</a>
+    <button class="btn secundario" type="button" data-abrir="manual">Qué incluye el manual</button>
+    <button class="btn secundario" type="button" data-abrir="trabajo">Cómo trabajamos</button>
+  </div>
+
+  <!-- 3. CONTACTO FINAL -->
+  <section class="caja">
+    <h2>Empecemos</h2>
+    <p>Escríbeme y te cuento los paquetes de tutoría disponibles.</p>
+    <div class="botones" style="margin-bottom:0">
+      <a class="btn" href="https://wa.me/593987213085" target="_blank" rel="noopener">Hablar por WhatsApp</a>
+    </div>
+  </section>
+
+</main>
+
+<!-- VENTANA: QUÉ INCLUYE EL MANUAL -->
+<div class="modal" id="manual" aria-hidden="true">
+  <div class="ventana" role="dialog" aria-modal="true" aria-labelledby="t-manual">
+    <button class="cerrar" type="button" aria-label="Cerrar">&times;</button>
+    <h2 id="t-manual">Para emprendimientos locales</h2>
+    <p>Si vendes productos o servicios y hoy dependes solo de las redes sociales, este manual te muestra cómo ordenar todo en un solo lugar y dirigir a tus clientes hacia él.</p>
+    <h3>Qué aprenderás</h3>
+    <ul class="servicios">
+      <li><strong>Crear tu tienda</strong><span>Registro, configuración inicial, productos o servicios, fotos y descripciones.</span></li>
+      <li><strong>Conectar tus redes sociales</strong><span>Enlaza Instagram, Facebook, TikTok y más para que tus contactos lleguen a tu tienda.</span></li>
+      <li><strong>Comprar y vender dentro del programa</strong><span>Cómo funcionan las compras dentro de eSponsor, paso a paso.</span></li>
+      <li><strong>Agendar citas o derivar a WhatsApp</strong><span>Como no se puede comprar por WhatsApp con dinero real, aprenderás a agendar citas reales o a derivar al cliente a tu WhatsApp para cerrar el trato.</span></li>
+    </ul>
+  </div>
+</div>
+
+<!-- VENTANA: CÓMO TRABAJAMOS -->
+<div class="modal" id="trabajo" aria-hidden="true">
+  <div class="ventana" role="dialog" aria-modal="true" aria-labelledby="t-trabajo">
+    <button class="cerrar" type="button" aria-label="Cerrar">&times;</button>
+    <h2 id="t-trabajo">Cómo trabajamos</h2>
+    <ol>
+      <li>Me escribes y me cuentas qué vendes.</li>
+      <li>Te muestro la tienda de ejemplo y te explico las opciones.</li>
+      <li>Creamos tu tienda juntos con el manual.</li>
+      <li>Aprendes a administrarla por tu cuenta.</li>
+    </ol>
+    <p class="suave" style="margin-top:14px">Crear una tienda no garantiza ventas: los resultados dependen de tu oferta, tu promoción y tu constancia. Tú siempre mantienes el control de tus claves y cuentas.</p>
+  </div>
+</div>
+
+<script>
+  (function () {
+    var abierto = null, origen = null;
+
+    function abrir(id, boton) {
+      var m = document.getElementById(id);
+      if (!m) return;
+      origen = boton; abierto = m;
+      m.classList.add('abierto');
+      m.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      m.querySelector('.cerrar').focus();
+    }
+    function cerrar() {
+      if (!abierto) return;
+      abierto.classList.remove('abierto');
+      abierto.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      if (origen) origen.focus();
+      abierto = null;
+    }
+
+    document.querySelectorAll('[data-abrir]').forEach(function (b) {
+      b.addEventListener('click', function () { abrir(b.getAttribute('data-abrir'), b); });
+    });
+    document.querySelectorAll('.modal').forEach(function (m) {
+      // clic en el fondo (fuera de la ventana) o en la X
+      m.addEventListener('click', function (e) {
+        if (e.target === m || e.target.classList.contains('cerrar')) cerrar();
+      });
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') cerrar();
+    });
+  })();
+</script>
+</body>
+</html>
